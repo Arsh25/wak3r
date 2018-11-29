@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wak3r</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="large-3 medium-3 small-3 cell"></div>
+        <div class="large-6 medium-6 small-6 cell centertext">
+          <h1>wak<span>3</span>r</h1>
+        </div>
+        <div class="large-3 medium-3 small-3 cell"></div>
+      </div>
+      <div class="grid-x grid-padding-x">
+        <div class="large-3 medium-3 small-3 cell"></div>
+        <div class="large-6 medium-6 small-6 cell">
+          <div class="callout">
+            <div class="centertext">
+              <h3>Wakey-wakey, eggs and bakey!</h3>
+              <p>Select which days and at what time you'd like the light to be turned on.</p>
+            </div>
+            <br />
+            <form data-abide>
+              <div class="grid-x grid-padding-x">
+                <div class="large-12 medium-12 small-12 cell">
+                  <ul id="days">
+                    <li class="round noselect">
+                      <input id="su" type="checkbox"><label for="su">S</label>
+                    </li>
+                    <li class="round noselect">
+                      <input id="mo" type="checkbox"><label for="mo">M</label>
+                    </li>
+                    <li class="round noselect">
+                      <input id="tu" type="checkbox"><label for="tu">T</label>
+                    </li>
+                    <li class="round noselect">
+                      <input id="we" type="checkbox"><label for="we">W</label>
+                    </li>
+                    <li class="round noselect">
+                      <input id="th" type="checkbox"><label for="th">T</label>
+                    </li>
+                    <li class="round noselect">
+                      <input id="fr" type="checkbox"><label for="fr">F</label>
+                    </li>
+                    <li class="round noselect">
+                      <input id="sa" type="checkbox"><label for="sa">S</label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <br />
+              <div class="grid-x grid-padding-x">
+                <div class="large-12 medium-12 small-12 cell">
+                  <ul id="time">
+                    <li class="clock">
+                      <i id="inch">
+                        <b class="up"></b>
+                      </i>
+                      <input type="text" class="hrs" name="hours" value="0" required pattern="[0-9]" disabled>
+                      <i id="dech">
+                        <b class="down"></b>
+                      </i>
+                    </li>
+                    <li class="clock">
+                      <i id="incm">
+                        <b class="up"></b>
+                      </i>
+                      <input type="text" class="mins" name="minutes" value="0" required pattern="[0-9]" disabled>
+                      <i id="decm">
+                        <b class="down"></b>
+                      </i>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <br />
+              <div class="centertext">
+                <button class="hollow button" id="submit">SUBMIT</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="large-3 medium-3 small-3 cell"></div>
+      </div>
+    </div>
+    <div id="save">
+      <div class="noselect" id="saved">CONFIGURATION<br />SAVED</div>
+    </div>
+    <script src="{{ url_for('static', filename='js/vendor/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/what-input.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/foundation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,223 @@
+/* MISC STYLES */
+
+.callout
+{
+    border: 1px solid #f26816 !important;
+}
+
+span
+{
+    color: #f26816;
+}
+
+.noselect
+{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.centertext
+{
+    text-align: center;
+}
+
+
+/* DAY LABEL STYLES */
+
+.round
+{
+    position: relative;
+}
+  
+.round label
+{
+    border: 2px solid #000000;
+    color: #000000;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 36px;
+    width: 36px;
+    left: -18px;
+    position: absolute;
+    top: -12px;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+}
+
+.round label:hover, .round label:focus
+{
+    background-color: #f26816;
+    border: 2px solid #f26816;
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.round label:after
+{
+    border-top: none;
+    border-right: none;
+    height: 6px;
+    left: 7px;
+    color: #f26816;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    position: absolute;
+    top: 8px;
+    width: 12px;
+}
+
+.round input[type="checkbox"]
+{
+    visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label
+{
+    border-color: #f26816;
+    color: #f26816;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+}
+
+.round input[type="checkbox"]:checked + label:after
+{
+    color: #f26816;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+/* DAY AND TIME LIST STYLES */
+
+ul
+{
+    list-style-type: none;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+ul#days li, ul#time li
+{
+    display: inline-block;
+    margin: 0 1.75rem;
+}
+
+ul#time li input
+{
+    width: 5rem;
+    margin: 0;
+    color: #000000;
+    border-color: #f26816;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+/* TIME INPUT STYLES */
+
+input:disabled
+{
+    background-color: #ffffff;
+    cursor: default;
+}
+
+b
+{
+    border: solid #f26816;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin: 0.5rem 2.22rem;
+    transition: border-color 0.25s ease-out, color 0.25s ease-out;
+}
+
+#inch:hover b, #inch:focus b, #dech:hover b, #dech:focus b, #incm:hover b, #incm:focus b, #decm:hover b, #decm:focus b
+{
+    border-color: black;
+    transition: border-color 0.25s ease-out, color 0.25s ease-out;
+}
+
+#inch, #dech, #incm, #decm
+{
+    cursor: pointer;
+    width: 5rem;
+}
+
+.up
+{
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.down
+{
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+/* SUBMIT BUTTON STYLES */
+
+.button.hollow
+{
+    border: 2px solid #f26816;
+    color: #f26816;
+    font-weight: 700;
+}
+
+.button.hollow:hover, .button.hollow:focus
+{
+    background-color: #f26816;
+    border: 2px solid #f26816;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+
+/* SAVE CONFIRMATION NOTIFICATION STYLES */
+
+#save
+{
+    text-align: center;
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(242, 104, 22, 0.25);
+    z-index: 2;
+    cursor: pointer;
+}
+
+#saved
+{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    font-size: 6rem;
+    font-weight: bold;
+    color: #66bb6a;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
