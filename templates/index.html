@@ -26,30 +26,30 @@
               <p>Select which days and at what time you'd like the light to be turned on.</p>
             </div>
             <br />
-            <form data-abide>
+            <form data-abide action="{{ url_for('index') }}" method="POST">
               <div class="grid-x grid-padding-x">
                 <div class="large-12 medium-12 small-12 cell">
                   <ul id="days">
                     <li class="round noselect">
-                      <input id="su" type="checkbox"><label for="su">S</label>
+                      <input id="su" name="day" type="checkbox" value="0"><label for="su">S</label>
                     </li>
                     <li class="round noselect">
-                      <input id="mo" type="checkbox"><label for="mo">M</label>
+                      <input id="mo" name="day" type="checkbox" value="1"><label for="mo">M</label>
                     </li>
                     <li class="round noselect">
-                      <input id="tu" type="checkbox"><label for="tu">T</label>
+                      <input id="tu" name="day" type="checkbox" value="2"><label for="tu">T</label>
                     </li>
                     <li class="round noselect">
-                      <input id="we" type="checkbox"><label for="we">W</label>
+                      <input id="we" name="day" type="checkbox" value="3"><label for="we">W</label>
                     </li>
                     <li class="round noselect">
-                      <input id="th" type="checkbox"><label for="th">T</label>
+                      <input id="th" name="day" type="checkbox" value="4"><label for="th">T</label>
                     </li>
                     <li class="round noselect">
-                      <input id="fr" type="checkbox"><label for="fr">F</label>
+                      <input id="fr" name="day" type="checkbox" value="5"><label for="fr">F</label>
                     </li>
                     <li class="round noselect">
-                      <input id="sa" type="checkbox"><label for="sa">S</label>
+                      <input id="sa" name="day" type="checkbox" value="6"><label for="sa">S</label>
                     </li>
                   </ul>
                 </div>
@@ -62,7 +62,7 @@
                       <i id="inch">
                         <b class="up"></b>
                       </i>
-                      <input type="text" class="hrs" name="hours" value="0" required pattern="[0-9]" disabled>
+                      <input type="text" class="hrs noselect" name="hours" value="0" required pattern="integer" readonly>
                       <i id="dech">
                         <b class="down"></b>
                       </i>
@@ -71,7 +71,7 @@
                       <i id="incm">
                         <b class="up"></b>
                       </i>
-                      <input type="text" class="mins" name="minutes" value="0" required pattern="[0-9]" disabled>
+                      <input type="text" class="mins noselect" name="minutes" value="0" required pattern="integer" readonly>
                       <i id="decm">
                         <b class="down"></b>
                       </i>

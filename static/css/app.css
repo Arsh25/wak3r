@@ -129,7 +129,7 @@ ul#time li input
 
 /* TIME INPUT STYLES */
 
-input:disabled
+input[readonly], textarea[readonly]
 {
     background-color: #ffffff;
     cursor: default;

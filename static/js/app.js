@@ -51,7 +51,7 @@ $('#decm').click(function()
 
 $('#submit').click(function(e)
 {
-    e.preventDefault();
+    //e.preventDefault();
     document.getElementById("save").style.display = "block";
     setTimeout(function(){
         $('#save').fadeOut('slow');

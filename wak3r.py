@@ -13,6 +13,12 @@ app = Flask(__name__)
 @app.route('/', methods = ['GET', 'POST'])
 def index():
 	if request.method == 'POST':
+		days = request.form.getlist('day')
+
+		hrs = request.form['hours']
+		mins = request.form['minutes']
+		print("data:", days, hrs, mins)
+
 		return render_template('index.html')
 	elif request.method == 'GET':
 		return render_template('index.html')
