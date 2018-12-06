@@ -7,7 +7,7 @@ from datetime import date
 import time
 
 class LampClient():
-	
+	next_turn_on = None
 	def __init__(self,serial_port,baud_rate,server_url,time_format='%w:%H:%M'):
 		self.serial_port = serial_port
 		self.server_url = server_url
@@ -26,6 +26,7 @@ class LampClient():
 		return self.latest_data
 	
 	def convert_to_datetime(self):
+		self.get_latest_data()
 		self.times = []
 		for key in self.latest_data.keys():
 			if key != 'last_modified':
@@ -39,11 +40,42 @@ class LampClient():
 						print(time_string)
 						self.times.append(time_string)
 
+	def get_turn_on_times_for_today(self):
+		self.convert_to_datetime()
+		self.current_time = datetime.now()
+		self.today_times = []
+		self.turn_on_today = False
+		for my_time in self.times:
+			my_time = my_time.split(':')
+			if int(my_time[0]) == self.current_time.weekday():
+				if int(my_time[1]) == self.current_time.hour:
+					if int(my_time[2]) > self.current_time.minute:
+						turn_on_string = my_time[1]+':'+my_time[2]
+						self.today_times.append(datetime.strptime(turn_on_string,'%H:%M'))
+						self.turn_on_today = True
+				elif int(my_time[1]) > self.current_time.hour:
+					turn_on_string = my_time[1]+':'+my_time[2]
+					self.today_times.append(datetime.strptime(turn_on_string,'%H:%M'))
+					self.turn_on_today = True
+
+
+	def get_next_turn_on(self):
+		self.get_turn_on_times_for_today()
+		if len(self.today_times) >0:
+			self.next_turn_on = min(self.today_times)
+			current_time = datetime.now()
+			while True:
+				if self.next_turn_on.hour > current_time.hour:
+						break
+				elif self.next_turn_on.hour == current_time.hour:
+					if self.next_turn_on.minute >= current_time.minute:
+						break
+				else:
+					min_index = today_times.index(min(self.today_times))
+					self.next_turn_on = min(self.today_times[:min_index],self.today_times[min_index+1:])
+
+
 if __name__ == '__main__':
-	my_lamp = LampClient('fake_serial',9600,'http://localhost:5000')
-	print(my_lamp.get_latest_data())
-	my_lamp.convert_to_datetime()
-	# print(my_lamp.times)
-	print(my_lamp.today.weekday())
-	for time in my_lamp.times:
-		print(time)	
+	my_lamp = LampClient('fake_serial',9600,'http://localhost:5000')	
+	my_lamp.get_next_turn_on()
+	print(my_lamp.next_turn_on)
