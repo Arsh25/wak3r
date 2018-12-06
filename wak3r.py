@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.5
+#!/usr/bin/env python3
 
 from flask import Flask, render_template, redirect, url_for, request, jsonify, make_response
 from flask_pymongo import PyMongo
