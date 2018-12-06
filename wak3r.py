@@ -66,7 +66,7 @@ def get_times():
 
 	for i in range(len(data)):
 		days = data[i]['days']
-		time = data[i]['hrs'] + ":" + data[0]['mins']
+		time = data[i]['hrs'] + ":" + data[i]['mins']
 		clock.append({"days" : days, "time" : time})
 
 	return jsonify(clock)
