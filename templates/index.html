@@ -5,10 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>wak3r</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/solid.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
   </head>
-  <body>
+  <body class="noselect">
     <div class="grid-container">
       <div class="grid-x grid-padding-x">
         <div class="large-3 medium-3 small-3 cell"></div>
@@ -26,7 +28,7 @@
               <p>Select which days and at what time you'd like the light to be turned on.</p>
             </div>
             <br />
-            <form data-abide action="{{ url_for('index') }}" method="POST">
+            <form data-abide action="{{ url_for('index') }}" method="POST" id="morning">
               <div class="grid-x grid-padding-x">
                 <div class="large-12 medium-12 small-12 cell">
                   <ul id="days">
@@ -81,13 +83,126 @@
               </div>
               <br />
               <div class="centertext">
-                <button class="hollow button" id="submit">SUBMIT</button>
+                <button class="hollow button" id="submit";>SUBMIT</button>
               </div>
             </form>
           </div>
         </div>
         <div class="large-3 medium-3 small-3 cell"></div>
       </div>
+
+      <br />
+
+      {% if settings %}
+
+      <div class="grid-x grid-padding-x" id="wake">
+        <div class="large-3 medium-3 small-3 cell"></div>
+        <div class="large-6 medium-6 small-6 cell">
+          <div class="centertext">
+            <h4>CURRENT SETTINGS</h4>
+          </div>
+        </div>
+        <div class="large-3 medium-3 small-3 cell"></div>
+      </div>
+
+      {% for s in settings %}
+
+      <div class="grid-x grid-padding-x" id="wake">
+        <div class="large-3 medium-3 small-3 cell"></div>
+        <div class="large-6 medium-6 small-6 cell">
+          <div class="grid-x grid-padding-x">
+            <div class="large-11 medium-11 small-11 cell callout" style="margin-right: 0;">
+
+                <div class="grid-x grid-padding-x">
+                  <div class="large-12 medium-12 small-12 cell">
+                    <ul id="days">
+                      <li class="roundset noselect">
+                        <i id="su"></i>
+                        {% if '0' in s['days'] %}
+                        <label for="su" style="border-color: #f26816; color: #f26816;">S</label>
+                        {% else %}
+                        <label for="su" style="border-color: #000000; color: #000000;">S</label>
+                        {% endif %}
+                      </li>
+                      <li class="roundset noselect">
+                        <i id="mo"></i>
+                        {% if '1' in s['days'] %}
+                        <label for="mo" style="border-color: #f26816; color: #f26816;">M</label>
+                        {% else %}
+                        <label for="mo" style="border-color: #000000; color: #000000;">M</label>
+                        {% endif %}
+                      </li>
+                      <li class="roundset noselect">
+                        <i id="tu"></i>
+                        {% if '2' in s['days'] %}
+                        <label for="tu" style="border-color: #f26816; color: #f26816;">T</label>
+                        {% else %}
+                        <label for="tu" style="border-color: #000000; color: #000000;">T</label>
+                        {% endif %}
+                      </li>
+                      <li class="roundset noselect">
+                        <i id="we"></i>
+                        {% if '3' in s['days'] %}
+                        <label for="we" style="border-color: #f26816; color: #f26816;">W</label>
+                        {% else %}
+                        <label for="we" style="border-color: #000000; color: #000000;">W</label>
+                        {% endif %}
+                      </li>
+                      <li class="roundset noselect">
+                        <i id="th"></i>
+                        {% if '4' in s['days'] %}
+                        <label for="th" style="border-color: #f26816; color: #f26816;">T</label>
+                        {% else %}
+                        <label for="th" style="border-color: #000000; color: #000000;">T</label>
+                        {% endif %}
+                      </li>
+                      <li class="roundset noselect">
+                        <i id="fr"></i>
+                        {% if '5' in s['days'] %}
+                        <label for="fr" style="border-color: #f26816; color: #f26816;">F</label>
+                        {% else %}
+                        <label for="fr" style="border-color: #000000; color: #000000;">F</label>
+                        {% endif %}
+                      </li>
+                      <li class="roundset noselect">
+                        <i id="sa"></i>
+                        {% if '6' in s['days'] %}
+                        <label for="sa" style="border-color: #f26816; color: #f26816;">S</label>
+                        {% else %}
+                        <label for="sa" style="border-color: #000000; color: #000000;">S</label>
+                        {% endif %}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <br />
+                <div class="grid-x grid-padding-x">
+                  <div class="large-12 medium-12 small-12 cell">
+                    <h4 class="centertext" id="is_set">
+                      {{ s['hrs'] }}<span>:</span>{{ s['mins'] }}
+                    </h4>
+                  </div>
+                </div>
+
+            </div>
+
+            <div class="large-1 medium-1 small-1 cell callout" style="margin-left: 0; padding: 0;">
+              <div class="grid-x grid-padding-x vert_cont">
+                <div id="del" class="vert large-12 medium-12 small-12 centertext" onclick="del(this)">
+                  <i class="fas fa-trash-alt"></i>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="large-3 medium-3 small-3 cell"></div>
+      </div>
+
+      {% endfor %}
+
+      {% endif %}
+
     </div>
     <div id="save">
       <div class="noselect" id="saved">CONFIGURATION<br />SAVED</div>

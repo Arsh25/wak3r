@@ -96,6 +96,37 @@ span
     text-align: center;
 }
 
+.roundset
+{
+    position: relative;
+}
+  
+.roundset label
+{
+    border: 2px solid #000000;
+    color: #000000;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: default;
+    height: 36px;
+    width: 36px;
+    left: -18px;
+    position: absolute;
+    top: -12px;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+}
+
+.roundset b + label
+{
+    border-color: #f26816;
+    color: #f26816;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+}
+
 
 /* DAY AND TIME LIST STYLES */
 
@@ -124,6 +155,26 @@ ul#time li input
     font-weight: 700;
     font-size: 20px;
     text-align: center;
+}
+
+.vert_cont
+{
+    height: 142px;
+    width: auto;
+}
+
+.fa-trash-alt
+{
+    color: #f26816;
+    cursor: pointer;
+    font-size: 2rem;
+    margin: 55px 0.5rem;
+}
+
+.fa-trash-alt:hover, .fa-trash-alt:focus, .vert:hover .fa-trash-alt, .vert:focus .fa-trash-alt
+{
+    color: black;
+    transition: color 0.25s ease-out, color 0.25s ease-out;
 }
 
 
